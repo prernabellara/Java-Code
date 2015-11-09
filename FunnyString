@@ -1,0 +1,40 @@
+import java.io.*;
+import java.util.*;
+/*
+Solution for HackerRank FunnyString
+Suppose you have a string S which has length N and is indexed from 0 to N−1. String R is the reverse of the string S.
+The string S is funny if the condition |Si−Si−1|=|Ri−Ri−1| is true for every i from 1 to N−1.
+Reference
+URL: https://www.hackerrank.com/challenges/funny-string
+*/
+
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class FunnyString {
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        Scanner sc=new Scanner(System.in);
+        String s = sc.nextLine();
+        int n=Integer.parseInt(s);
+        for(int j=0;j<n;j++)
+        {
+            String orig=sc.nextLine();
+            char[] origArray=orig.toCharArray();
+            boolean isFunny=true;
+            int len=orig.length();
+            for(int i=0; i<orig.length()/2;i++)
+            {
+                
+            if(Math.abs( origArray[i]-origArray[i+1])!=Math.abs(origArray[len-i-1]-origArray[len-i-2]))
+                isFunny=false;
+            }
+            if(isFunny)
+             System.out.println("Funny");
+            else
+                System.out.println("Not Funny");
+        }
+    }
+}
