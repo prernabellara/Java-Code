@@ -1,5 +1,6 @@
 /*
-Problem Statement
+Reference: https://www.hackerrank.com/challenges/the-quickest-way-up
+"Problem Statement
 
 Markov takes out his Snakes and Ladders game and stares at the board, and wonders: If he had absolute control on the die, and could get it to generate any number (in the range 1-6) he desired, what would be the least number of rolls of the die in which he'd be able to reach the destination square (Square Number 100) after having started at the base square (Square Number 1)?
 
@@ -30,7 +31,7 @@ The next line contain interger M(Number of snakes) and after that M line follow.
 Output Format
 
 For each of the T test cases, output one integer, each in a new line, which is the least number of moves (or rolls of the die) in which the player can reach the target square (Square Number 100) after starting at the base (Square Number 1). This corresponds to the ideal sequence of faces which show up when the die is rolled. 
-If there is no solution, print -1.
+If there is no solution, print -1."
 */
 
 import java.io.*;
