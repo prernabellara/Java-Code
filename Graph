@@ -1,0 +1,97 @@
+import java.io.*;
+import java.util.*;
+
+public class Graph 
+{   
+private boolean[][] edges; 
+private Object[] labels;
+private static Queue <Integer> vertex = new PriorityQueue<Integer>();
+public Graph (int n) 
+{  
+	edges = new boolean[n][n];
+	labels = new Object[n];
+
+}
+
+public void addEdge(int s, int t) 
+{   
+	edges[s][t] = true;
+}
+
+public Object getLabel(int v) 
+{
+	return labels[v];
+}
+
+public boolean isEdge(int s, int t) 
+{   return edges[s][t];}
+
+public int[] neighbors(int v) 
+{
+	int i,I;
+	int count;
+	int [] answer;
+	count = 0;
+	for (i=0; i<labels.length; i++) 
+	{   if (edges[v][i]) count++;}
+	answer = new int[count];count = 0;
+	for (I=0; I<labels.length; I++) 
+	{   if (edges[v][I])       
+		answer[count++] = I;
+	}
+	return answer;}
+ public void removeEdge(int s, int t)
+   {edges[s][t] = false;}
+   
+public void setLabel(int v, Object n) 
+{	
+	labels[v] = n;
+	Integer i=v;
+	vertex.add(i);
+}
+public int size() {return labels.length;}
+
+public static void dfRecurse (Graph g, int v, boolean[] marked) {
+  int [] next = g.neighbors(v);
+  int i, nextNeighbor;
+  marked[v] = true;
+  System.out.println(g.getLabel(v));
+  for (i=0;i<next.length;i++) 
+  {      nextNeighbor = next[i];
+  if (!marked[nextNeighbor])         
+  dfRecurse(g, nextNeighbor, marked);}
+}
+
+public static void bfRecurse (Graph g) {
+	Queue q=g.vertex;
+//	root.marked=true;
+//	0queue.enqueue(root);
+	for (Iterator<Integer> it = vertex.iterator(); it.hasNext(); ) 
+	{
+	System.out.println(it.next());
+	}
+}
+public static void dfPrint (Graph g, int start) 
+{boolean[] marked = new boolean[g.size()];
+dfRecurse(g, start, marked);
+}
+
+public static void main(String[] args)
+{
+	Graph g=new Graph(3);
+	g.addEdge(0,1);
+	g.addEdge(1,2);
+	//g.addEdge(2,3);x
+	int[] l0={0,1,2};
+	int[] l1={2};
+	g.setLabel(0,0);
+	g.setLabel(1,1);
+	g.setLabel(2,2);
+	//g.setLabel(1,l1);
+	//dfPrint(g,0);
+	bfRecurse(g);
+}
+
+
+}
+
