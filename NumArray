@@ -1,0 +1,42 @@
+import java.io.*;
+import java.util.*;
+public class NumArray {
+
+    HashMap<String,Integer> sums=new HashMap<String,Integer>();
+    int[] arr;
+    int sum=0;
+    public NumArray(int[] nums) {
+        arr=new int[nums.length];
+        arr=nums;
+    }
+
+    public int sumRange(int i, int j) 
+    {
+    	String I=Integer.toString(i);
+    	String J=Integer.toString(j);
+    	
+    	String s=I+","+J;
+    	if(sums.containsKey(s))
+    		return sums.get(s);
+        for(int k=i;k<=j;k++)
+        {
+        	sum+=arr[k];
+        }
+        sums.put(s,sum);
+        return sum;
+    }
+    public static void main(String[] args)
+    {
+    	int[] input={-2,0,3,-5,2,-1};
+    	NumArray n=new NumArray(input);
+    	System.out.println(n.sumRange(0, 5));
+    	System.out.println(n.sumRange(0, 3));
+    	System.out.println(n.sumRange(0, 5));
+    }
+}
+
+
+// Your NumArray object will be instantiated and called as such:
+// NumArray numArray = new NumArray(nums);
+// numArray.sumRange(0, 1);
+// numArray.sumRange(1, 2);
