@@ -1,0 +1,51 @@
+import java.io.*;
+import java.util.*;
+
+public class Operatorsx {
+
+	public static int getSum(int p, int q)
+	{
+	    int result = p ^ q; // + without carry 0+0=0, 0+1=1+0=1, 1+1=0
+	    int carry = (p & q) << 1; // 1+1=2
+	    if (carry != 0) {
+	        return getSum(result, carry);
+	    }
+	    return result;
+	}
+	public static int getSub(int x,int y)
+	{
+		if(y==0)
+			return x;
+		System.out.println("~x & y) is "+ (~x & y));
+		System.out.println("(~x & y) << 1 is "+((~x & y) << 1));
+		System.out.println("x is "+x);
+		return getSub(x ^ y, (~x & y) << 1);
+		
+	}
+	public static int getMulty(int a, int b)
+	{
+		int result=0;
+		  while(b != 0)               // Iterate the loop till b==0
+		   {
+	            if ((b & 01) != 0) // Logical ANDing of the value of b with 01
+		        {
+		          result=result+a;     // Add a to result if b is odd .
+		          System.out.println("res is "+ result);
+		        }
+		        a<<=1;                   // Left shifting the value contained in 'a' by 1 
+		                           // multiplies a by 2 for each loop
+		        b>>=1;                   // Right shifting the value contained in 'b' by 1.
+		        System.out.println("b is "+ b);
+		   }
+		  return result;
+	}
+	public static void main(String[] args)
+	{
+
+		int x=4;
+		int y=4;
+		
+	//    int result = x ^ y; // + without carry 0+0=0, 0+1=1+0=1, 1+1=0
+		System.out.println(getMulty(x,y));
+	}
+}
